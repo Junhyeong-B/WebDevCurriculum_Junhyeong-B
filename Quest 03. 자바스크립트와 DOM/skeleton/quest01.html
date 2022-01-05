@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			.star {
+				width: 300px;
+				height: 300px;
+				border: 1px solid;
+				display: inline-block;
+        overflow: auto;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+    <form>
+      <input type="text" />
+      <button>Run</button>
+    </form>
+    <div class="star"></div>
+		<script>
+      const $form = document.querySelector("form");
+      const $input = document.querySelector("input");
+      const $div = document.querySelector(".star");
+      $form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const star = [];
+        for (let i = 1; i <= $input.value; i++) {
+          star.push("*".repeat(i));
+        }
+        $div.innerHTML = `${star.map((s) => `<p style="margin: 0; text-align: center;">${s}</p>`).join("")}`;
+      })
+		</script>
+	</body>
+</html>
