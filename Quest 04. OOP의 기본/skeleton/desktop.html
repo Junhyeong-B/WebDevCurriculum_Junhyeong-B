@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="./desktop.css">
+		<script src="./desktop.js"></script>
+	</head>
+	<body>
+		<h1>Quest 04. OOP의 기본 Quest 웹 바탕화면</h1>
+		<form>
+			<input id="icon" type="text" placeholder="Icon 개수" />
+			<input id="folder" type="text" placeholder="Folder 개수" />
+			<button>Run</button>
+		</form>
+
+		<section class="desktop">
+		</section>
+
+		<script>
+			const $form = document.querySelector('form');
+			const $icon = document.querySelector('#icon');
+			const $folder = document.querySelector('#folder');
+			$form.addEventListener('submit', (e) => {
+				e.preventDefault();
+				if (!!$icon.value && !!$folder.value) {
+					let myDesktop = new Desktop(
+						/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
+						$icon.value, $folder.value
+					);
+				}
+			})
+
+		</script>
+	</body>
+</html>
