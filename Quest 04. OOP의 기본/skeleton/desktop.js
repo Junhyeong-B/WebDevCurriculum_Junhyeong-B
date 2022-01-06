@@ -1,3 +1,8 @@
+const isProgram = (target) =>
+  target.classList.contains("folder") || target.classList.contains("icon");
+
+const isFolder = (target) => target.classList.contains("folder");
+
 class Component {
   $target;
   $state;
@@ -56,6 +61,10 @@ class Desktop extends Component {
 
   setEvent() {
     this.$target.addEventListener("dragstart", (e) => {
+      this.$target
+        .querySelectorAll("div")
+        .forEach((p) => p.classList.remove("clicked"));
+      e.target.classList.add("clicked");
       this.$dragging = e.target;
       e.target.classList.add("dragging");
     });
@@ -67,10 +76,7 @@ class Desktop extends Component {
 
     this.$target.addEventListener("dragover", (e) => {
       e.preventDefault();
-      if (
-        e.target.classList.contains("folder") ||
-        e.target.classList.contains("icon")
-      ) {
+      if (isProgram(e.target)) {
         const afterElement = getDragAfterElement(this.$target, e.clientX);
         if (!afterElement) {
           this.$target.appendChild(this.$dragging);
@@ -144,4 +150,22 @@ class Folder {
   }
 }
 
-class Window {}
+class Window {
+  $target;
+  $node;
+  constructor($target) {
+    this.$target = $target;
+    this.setEvent();
+  }
+
+  setEvent() {
+    this.$target.addEventListener("click", (e) => {
+      if (isProgram(e.target)) {
+        this.$target
+          .querySelectorAll("div")
+          .forEach((p) => p.classList.remove("clicked"));
+        e.target.classList.add("clicked");
+      }
+    });
+  }
+}

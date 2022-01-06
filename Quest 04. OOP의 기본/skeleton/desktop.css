@@ -21,6 +21,18 @@
   flex-shrink: 0;
 }
 
+.opened {
+  margin: 20px;
+  width: 70vw;
+  height: 500px;
+  font-size: 40px;
+  font-weight: bold;
+  background-color: white;
+  z-index: 1000;
+  border: 2px solid;
+  position: absolute;
+}
+
 .icon {
   width: 60px;
   height: 60px;
@@ -35,9 +47,6 @@
   opacity: 0.5;
 }
 
-.dragover {
-  content: "";
-  background-color: rgba(0, 128, 128, 0.205);
-  width: 70px;
-  height: 70px;
+.clicked {
+  background-color: rgba(21, 35, 231, 0.452);
 }
