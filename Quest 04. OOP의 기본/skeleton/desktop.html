@@ -17,18 +17,20 @@
 		</section>
 
 		<script>
-			const $form = document.querySelector('form');
-			const $icon = document.querySelector('#icon');
-			const $folder = document.querySelector('#folder');
-			$form.addEventListener('submit', (e) => {
-				e.preventDefault();
-				if (!!$icon.value && !!$folder.value) {
-					let myDesktop = new Desktop(
-						/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
-						$icon.value, $folder.value
-					);
-				}
-			})
+			// const $form = document.querySelector('form');
+			// const $icon = document.querySelector('#icon');
+			// const $folder = document.querySelector('#folder');
+			// $form.addEventListener('submit', (e) => {
+			// 	e.preventDefault();
+			// 	if (!!$icon.value && !!$folder.value) {
+			// 		let myDesktop = new Desktop(
+			// 			/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
+			// 			$icon.value, $folder.value
+			// 		);
+			// 	}
+			// })
+
+			const myDesktop = new Desktop(document.querySelector('.desktop'))
 
 		</script>
 	</body>
