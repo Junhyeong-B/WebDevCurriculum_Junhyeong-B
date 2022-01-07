@@ -1,4 +1,4 @@
-# Quest 2 CSS의 기초와 응용
+# [Quest 2 CSS의 기초와 응용](https://github.com/Knowre-Dev/WebDevCurriculum/tree/master/Quest02)
 
 # 1. CSS를 HTML에 적용하는 세 가지 방법은 무엇일까요?
 

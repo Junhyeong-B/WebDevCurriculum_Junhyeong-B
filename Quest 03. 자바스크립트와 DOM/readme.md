@@ -1,4 +1,4 @@
-# Quest 3 자바스크립트와 DOM
+# [Quest 3 자바스크립트와 DOM](https://github.com/Knowre-Dev/WebDevCurriculum/tree/master/Quest03)
 
 # 1. 자바스크립트는 버전별로 어떻게 변화하고 발전해 왔을까요?
 
