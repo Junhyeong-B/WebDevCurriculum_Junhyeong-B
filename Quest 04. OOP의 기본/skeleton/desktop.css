@@ -10,6 +10,7 @@
   padding: 10px;
   text-align: center;
   font-size: 12px;
+  position: relative;
 }
 
 .folder {
@@ -30,7 +31,29 @@
   background-color: white;
   z-index: 1000;
   border: 2px solid;
-  position: absolute;
+  position: relative;
+}
+
+.opened header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  background-color: rgba(113, 190, 241, 0.445);
+}
+
+.opened h6 {
+  font-size: 24px;
+  margin: 5px;
+  font-weight: 400;
+}
+
+.closeBtn {
+  background-color: tomato;
+  height: fit-content;
+  width: 24px;
+  height: 24px;
+  margin: 5px;
 }
 
 .icon {

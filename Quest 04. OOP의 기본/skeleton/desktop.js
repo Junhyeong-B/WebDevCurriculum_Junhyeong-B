@@ -1,7 +1,8 @@
 const isProgram = (target) =>
   target.classList.contains("folder") || target.classList.contains("icon");
-
 const isFolder = (target) => target.classList.contains("folder");
+const isCloseBtn = (target) => target.classList.contains("closeBtn");
+const isOpendFolder = (target) => target.classList.contains("opened");
 
 class Component {
   $target;
@@ -61,6 +62,8 @@ class Desktop extends Component {
 
   setEvent() {
     this.$target.addEventListener("dragstart", (e) => {
+      if (isOpendFolder(e.target)) return;
+
       this.$target
         .querySelectorAll("div")
         .forEach((p) => p.classList.remove("clicked"));
@@ -75,6 +78,8 @@ class Desktop extends Component {
     });
 
     this.$target.addEventListener("dragover", (e) => {
+      if (isOpendFolder(e.target)) return;
+
       e.preventDefault();
       if (isProgram(e.target)) {
         const afterElement = getDragAfterElement(this.$target, e.clientX);
@@ -153,6 +158,7 @@ class Folder {
 class Window {
   $target;
   $node;
+  $folder;
   constructor($target) {
     this.$target = $target;
     this.setEvent();
@@ -162,9 +168,37 @@ class Window {
     this.$target.addEventListener("click", (e) => {
       if (isProgram(e.target)) {
         this.$target
-          .querySelectorAll("div")
+          .querySelectorAll("div:not(.opened)")
           .forEach((p) => p.classList.remove("clicked"));
         e.target.classList.add("clicked");
+      }
+    });
+
+    this.$target.addEventListener("dblclick", (e) => {
+      if (isFolder(e.target)) {
+        this.$node = e.target;
+        this.openFolder();
+      }
+    });
+  }
+
+  openFolder() {
+    const $folder = document.createElement("div");
+    $folder.setAttribute("class", "opened");
+    $folder.setAttribute("draggable", "true");
+    $folder.innerHTML = `
+      <header>
+        <h6>${this.$node.innerText}</h6>
+        <button id="${this.$node.id}" class="closeBtn">X</button>
+      </header>
+    `;
+    this.$folder = $folder;
+    this.$target.appendChild($folder);
+
+    $folder.addEventListener("click", (e) => {
+      if (isCloseBtn(e.target)) {
+        const folder = e.target.closest("div");
+        this.$target.removeChild(folder);
       }
     });
   }
